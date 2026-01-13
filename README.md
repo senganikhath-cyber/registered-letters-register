@@ -1,21 +1,49 @@
-# Registered Letters Register
+# Registered Letters Slip Register
 
-A small static web app to record and track registered letters. This repository contains a minimal HTML/JS/CSS implementation suitable for local use or deployment as a static site.
+A digital register for tracking registered letters received from the post office. This web application provides a comprehensive system to log, track, and manage all registered letters with detailed records.
 
-## Contents
+## Features
 
-- `index.html` — main UI
-- `assets/css/style.css` — styles
-- `assets/js/app.js` — application logic (stores data in localStorage)
-- `docs/user-guide.md` — basic user guide
+- 📝 **Add New Entries** - Record all details of registered letters
+- 📊 **Dashboard** - Visual summary with counts of letters by status
+- 🔍 **View & Search** - Easy access to all registered letter records
+- ✏️ **Edit & Update** - Modify existing entries as needed
+- 🗑️ **Delete Records** - Remove outdated or incorrect entries
+- 📥 **Export Data** - Export all records to CSV format
+- 📱 **Responsive Design** - Works on desktop and mobile devices
+- 🎨 **Clean Interface** - User-friendly and intuitive layout
 
-## Usage
+## Status Tracking
 
-1. Clone the repository
-2. Open `index.html` in a browser
+- **Received** - Letter received at the office
+- **Pending** - Awaiting collection by recipient
+- **Collected** - Successfully collected by recipient
 
-No build step is required.
+## Data Fields Captured
 
-## License
+1. Slip Number (Unique identifier from post office)
+2. Date Received
+3. Sender Name/Organization
+4. Receiver Name
+5. Post Office Name
+6. Letter Status
+7. Date Collected
+8. Collected By
+9. Remarks/Notes
+10. Letter Description
 
-This project is licensed under the MIT License — see the `LICENSE` file for details.
+## Installation & Usage
+
+### Option 1: Direct Use
+Simply open `index.html` in any modern web browser.
+
+### Option 2: Local Server (Recommended)
+For better functionality:
+
+```bash
+# Using Python
+python -m http.server 8000
+
+# Using Node.js with http-server
+npx http-server
+```
