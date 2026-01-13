@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Registered Letters Register</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Registered Letters Register</h1>
+    <p>Record and track registered letters.</p>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Add a New Registered Letter</h2>
+      <form id="letter-form">
+        <label>
+          Recipient name
+          <input type="text" id="recipient" required>
+        </label>
+        <label>
+          Address
+          <input type="text" id="address" required>
+        </label>
+        <label>
+          Date sent
+          <input type="date" id="dateSent" required>
+        </label>
+        <label>
+          Tracking number
+          <input type="text" id="tracking" required>
+        </label>
+        <button type="submit">Add Letter</button>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>Registered Letters</h2>
+      <table id="letters-table">
+        <thead>
+          <tr>
+            <th>Recipient</th>
+            <th>Address</th>
+            <th>Date Sent</th>
+            <th>Tracking #</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows populated by JS -->
+        </tbody>
+      </table>
+      <p id="empty-msg">No letters recorded yet.</p>
+    </section>
+  </main>
+
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>
