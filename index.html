@@ -3,36 +3,100 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Registered Letters Register</title>
+  <title>Registered Letters Slip Register</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <header>
-    <h1>Registered Letters Register</h1>
-    <p>Record and track registered letters.</p>
+    <h1>Registered Letters Slip Register</h1>
+    <p>Record and manage registered letters received from the post office.</p>
   </header>
 
   <main>
+    <section class="toolbar">
+      <div class="search-filter">
+        <input id="search-input" type="search" placeholder="Search by slip number, sender, receiver, tracking...">
+        <select id="status-filter">
+          <option value="all">All statuses</option>
+          <option value="Received">Received</option>
+          <option value="Pending">Pending</option>
+          <option value="Collected">Collected</option>
+        </select>
+        <button id="export-btn">Export CSV</button>
+      </div>
+    </section>
+
+    <section class="dashboard" aria-label="Dashboard summary">
+      <div class="card">
+        <h3 id="count-total">0</h3>
+        <p>Total Letters</p>
+      </div>
+      <div class="card">
+        <h3 id="count-received">0</h3>
+        <p>Received</p>
+      </div>
+      <div class="card">
+        <h3 id="count-pending">0</h3>
+        <p>Pending</p>
+      </div>
+      <div class="card">
+        <h3 id="count-collected">0</h3>
+        <p>Collected</p>
+      </div>
+    </section>
+
     <section class="form-section">
-      <h2>Add a New Registered Letter</h2>
+      <h2 id="form-title">Add a New Registered Letter</h2>
       <form id="letter-form">
+        <input type="hidden" id="editing-index" value="-1">
         <label>
-          Recipient name
-          <input type="text" id="recipient" required>
+          Slip Number
+          <input type="text" id="slipNumber" required>
         </label>
         <label>
-          Address
-          <input type="text" id="address" required>
+          Date Received
+          <input type="date" id="dateReceived" required>
         </label>
         <label>
-          Date sent
-          <input type="date" id="dateSent" required>
+          Sender Name/Organization
+          <input type="text" id="sender" required>
         </label>
         <label>
-          Tracking number
-          <input type="text" id="tracking" required>
+          Receiver Name
+          <input type="text" id="receiver" required>
         </label>
-        <button type="submit">Add Letter</button>
+        <label>
+          Post Office Name
+          <input type="text" id="postOffice">
+        </label>
+        <label>
+          Status
+          <select id="status">
+            <option value="Received">Received</option>
+            <option value="Pending">Pending</option>
+            <option value="Collected">Collected</option>
+          </select>
+        </label>
+        <label>
+          Date Collected
+          <input type="date" id="dateCollected">
+        </label>
+        <label>
+          Collected By
+          <input type="text" id="collectedBy">
+        </label>
+        <label>
+          Remarks/Notes
+          <input type="text" id="remarks">
+        </label>
+        <label>
+          Letter Description
+          <textarea id="description" rows="2"></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit" id="submit-btn">Add Letter</button>
+          <button type="button" id="cancel-edit" class="hidden">Cancel</button>
+        </div>
       </form>
     </section>
 
@@ -41,21 +105,28 @@
       <table id="letters-table">
         <thead>
           <tr>
-            <th>Recipient</th>
-            <th>Address</th>
-            <th>Date Sent</th>
-            <th>Tracking #</th>
+            <th>Slip #</th>
+            <th>Date Received</th>
+            <th>Sender</th>
+            <th>Receiver</th>
+            <th>Post Office</th>
+            <th>Status</th>
+            <th>Date Collected</th>
+            <th>Collected By</th>
+            <th>Remarks</th>
+            <th>Description</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <!-- Rows populated by JS -->
+          <!-- rows populated by JS -->
         </tbody>
       </table>
       <p id="empty-msg">No letters recorded yet.</p>
     </section>
   </main>
 
+  <script src="assets/js/export.js" defer></script>
   <script src="assets/js/app.js" defer></script>
 </body>
 </html>
